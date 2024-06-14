@@ -12,6 +12,7 @@ dotenv.config(
 
 export const sendOTP = async (req, res) => {
     try {
+        // console.log(req)
         const accountSid = process.env.ACCOUNT_SID_TWILLIO;
         const authToken = process.env.AUTH_TOKEN_TWILLIO;
         const twilioPhoneNumber = process.env.TWILLIO_PHONE_NUMBER;
@@ -115,3 +116,18 @@ export const getUserData = async(req, res) => {
     }
     return res.status(200).send({ message: 'User Exist' });
     }
+
+export const getUserDataStart = async(req, res) =>{
+    try {
+        const { number, userId, is_admin } = req.query;
+        console.log(number, userId, is_admin)
+        const user = await User.findOne({number: number, _id: userId})
+        if (user){
+            return res.status(200).send({is_admin: user.admin, user_exist: true})
+        }
+        return res.status(200).send({is_admin: false, user_exist: false})
+    } catch (error) {
+        console.log(err)
+        return res.status(404).send({message: "something went wrong"})
+    }
+}

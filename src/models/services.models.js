@@ -11,9 +11,13 @@ const serviceSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "ServiceList",
         },
+        orderId: {
+            type: Schema.Types.ObjectId,
+            ref: "Order"
+        },
         status: {
             type: String,
-            enum: ["Submitted", "Contacted", "Processing", "Decline", "Complete"],
+            enum: ["Submitted", "Contacted", "Processing", "Decline", "Complete",],
         },
         requestUser: {
             type: String,

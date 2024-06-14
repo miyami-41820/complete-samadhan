@@ -20,10 +20,6 @@ const serviceListSchema = new Schema(
         servicesOffered:{
             type: String,
         },
-        // process:{
-        //     type: String,
-        //     required: true,
-        // },
     },
     {
         timestamps: true

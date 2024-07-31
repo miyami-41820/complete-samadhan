@@ -21,7 +21,8 @@ export const sendOTP = async (req, res) => {
         const otp = Math.floor(100000 + Math.random() * 900000);
         console.log(phoneNumber, twilioPhoneNumber);
         const message = await client.messages.create({
-            body: `Your one time otp is ${otp}`,
+            body: `To verify your mobile number with Complete Samaadhan, your one-time OTP is ${otp}.
+            Please do not share this code with anyone.`,
             from: twilioPhoneNumber,
             to: phoneNumber
         });
